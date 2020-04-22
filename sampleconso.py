@@ -46,15 +46,14 @@ FEEDOPTIONS["enableCrossPartitionQuery"] = True
 
 conso1 = client.QueryItems(collection1 , QUERY, FEEDOPTIONS)
 if test_number == 1: 
-    containerPath = 'dbs/YOUR/colls/conso'
-    container = client.ReadContainer(containerPath)
+   container = client.ReadContainer(containerPath)
 
     container["indexingPolicy"] = {
     "indexingMode":"none",
     "includedPaths":[],
     "excludedPaths":[]
     }
-    response = client.ReplaceContainer(containerPath, container)
+    response = client.ReplaceContainer(conso, container)
     print('Request charge: \'{0}\' RUs'.format(client.last_response_headers['x-ms-request-charge']))
 
 print("load the source connection customer")
@@ -122,7 +121,7 @@ if test_number == 1:
         ]
     }
 
-    response = client.ReplaceContainer(containerPath, container)
+    response = client.ReplaceContainer(conso, container)
     print('Request charge: \'{0}\' RUs'.format(client.last_response_headers['x-ms-request-charge']))
 
 
