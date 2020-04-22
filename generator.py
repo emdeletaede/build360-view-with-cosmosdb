@@ -15,11 +15,9 @@ from datetime import datetime
 
 
 
-url = 'https://edecosmosdb.documents.azure.com:443/'
-key = '4uRxunxXFwGPLDxcxshAD0jTY5bIEJnRLsQAeC6rIVLL9q4qxmfsldnDGdHXzNGCnwoeILhdLVm8U9uzcXONUw=='
+url = 'YOUR /'
+key = 'YOUR'
 client = cosmos_client.CosmosClient(url, {'masterKey': key})
-
-# uri = "mongodb://edeaxacomputetest:RD4nLlCR4PIrRcaAXuWLPhY0hM1FzWwbhrIPAaXJWlxUGGMuY0SU9TvZVN0FitixKUsTRqF3ZK4pk7U8gpmRFw==@edeaxacomputetest.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@edeaxacomputetest@"
 
 QUERY = {
     "query": f"SELECT  value count(1) FROM c"
@@ -30,7 +28,7 @@ FEEDOPTIONS["enableCrossPartitionQuery"] = True
 
 
 
-database_name = 'edetestdatabasepython'
+database_name = 'YOURNAME'
 try:
     database = client.CreateDatabase({'id': database_name})
 except errors.HTTPFailure:
@@ -101,7 +99,7 @@ for i in range(1, 100):
     di["bank country"] = fake.bank_country()
     di["country"] = fake.country()
     di["s1"] = di2
-    client.UpsertItem("dbs/edetestdatabasepython/colls/c1",  di)
+    client.UpsertItem("dbs/YOUR/colls/c1",  di)
     cout = cout +  float (client.last_response_headers['x-ms-request-charge'])
     di.clear()
 
@@ -124,7 +122,7 @@ for i in range(1, 100):
     di["email"] = fake.email()
     di["plate"] = fake.license_plate()
     di["s2"] = di2
-    client.UpsertItem("dbs/edetestdatabasepython/colls/c2",  di)
+    client.UpsertItem("dbs/YOUR/colls/c2",  di)
     cout = cout +  float (client.last_response_headers['x-ms-request-charge'])
     di.clear()
 
@@ -143,7 +141,7 @@ for i in range(1, 100):
     di['productName'] = fake.name()
     di["email"] = fake.email()
     di["s3"] = di2
-    client.UpsertItem("dbs/edetestdatabasepython/colls/c3",  di)
+    client.UpsertItem("dbs/YrOUR/colls/c3",  di)
     cout = cout +  float (client.last_response_headers['x-ms-request-charge'])
     di.clear()
 
