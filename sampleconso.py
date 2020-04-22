@@ -27,15 +27,13 @@ print("2 create ?  ")
 choicetext = input ("Enter a number: ")
 choice = int(choicetext)
 
-url = 'https://edecosmosdb.documents.azure.com:443/'
-key = '4uRxunxXFwGPLDxcxshAD0jTY5bIEJnRLsQAeC6rIVLL9q4qxmfsldnDGdHXzNGCnwoeILhdLVm8U9uzcXONUw=='
+url = 'YOUR'
+key = '4YOUR='
 client = cosmos_client.CosmosClient(url, {'masterKey': key})
-collection1 = 'dbs/edetestdatabasepython/colls/c1'
-collection2 = 'dbs/edetestdatabasepython/colls/c2'
-collection3 = 'dbs/edetestdatabasepython/colls/c3'
-conso = 'dbs/edetestdatabasepython/colls/conso'
-
-# uri = "mongodb://edeaxacomputetest:RD4nLlCR4PIrRcaAXuWLPhY0hM1FzWwbhrIPAaXJWlxUGGMuY0SU9TvZVN0FitixKUsTRqF3ZK4pk7U8gpmRFw==@edeaxacomputetest.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@edeaxacomputetest@"
+collection1 = 'dbs/YOUR/colls/c1'
+collection2 = 'dbs/YOUR/colls/c2'
+collection3 = 'dbs/YOUR/colls/c3'
+conso = 'dbs/YOUR/colls/conso'
 
 QUERY = {
     "query": f"SELECT * from c"
@@ -48,7 +46,7 @@ FEEDOPTIONS["enableCrossPartitionQuery"] = True
 
 conso1 = client.QueryItems(collection1 , QUERY, FEEDOPTIONS)
 if test_number == 1: 
-    containerPath = 'dbs/RCS/colls/conso'
+    containerPath = 'dbs/YOUR/colls/conso'
     container = client.ReadContainer(containerPath)
 
     container["indexingPolicy"] = {
@@ -105,7 +103,6 @@ for i in conso1:
     else:
         client.UpsertItem(conso, i)
 
-   # client.CreateItem("dbs/RCS/colls/pythonconso", ls)
  
     print('Request charge: \'{0}\' RUs'.format(client.last_response_headers['x-ms-request-charge']))
     print(" treatment done for the customer with id")
